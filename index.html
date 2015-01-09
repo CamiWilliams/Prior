@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title>Prior</title>
+		<meta name="description" content="">
+		<meta name="author" content="Cami Williams">
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+		<!-- Bootstrap -->
+		<link href="dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="dist/js/bootstrap.min.js"></script>
+
+		<link href = "main_styles.css" type="text/css" rel="stylesheet">
+		<script src="login.js"></script>
+		<script src="https://cdn.firebase.com/js/client/2.1.0/firebase.js"></script>
+		<script src="sha256.js"></script>
+
+	</head>
+
+	<body onload="">
+
+		<div id="login">
+			<img src="resources/img/priorlogo_black.png" style="PADDING-BOTTOM: 5px">
+			<br>
+			<br>
+			<div id="login_inputs">
+				<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+				<input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+			</div>
+			<br>
+			<div id="login_buttons">
+				<span><button class="btn btn-lg btn-primary btn-block" type="submit" onclick="login()">Sign in</button>
+				<button class="btn btn-lg btn-primary btn-block" type="submit" onclick="signUp()">Sign Up</button></span>
+			</div>
+		</div>
+
+
+			<!-- Bootstrap core JavaScript
+			================================================== -->
+			<!-- Placed at the end of the document so the pages load faster -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+			<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+			<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+
+	</body>
+</html>
