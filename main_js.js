@@ -32,18 +32,34 @@ var lastAdded = false;
 var uploadFileNameDisplay = document.getElementById("filename");
 var uploadFilePath = "";
 
-function loadContent() {
-	currUser = localStorage.getItem('_userData');
-	//parse to Object Literal the JSON object
-	if(currUser) currUser = JSON.parse(currUser);
+function logout() {
+	document.getElementById("statements").style.visibility = "visible";
+	document.getElementById("statistics").style.visibility = "hidden";
+	document.getElementById("account_info").style.visibility = "hidden";
 
-	var toFill = document.getElementById("past-text");
-	toFill.innerHTML = " ";
+	currUser = null;
+	window.location.href = "index.html";
+}
 
-	getToday();
+function getAccount() {
+	document.getElementById("statements").style.visibility = "hidden";
+	document.getElementById("statistics").style.visibility = "hidden";
+	document.getElementById("account_info").style.visibility = "visible";
 
-	var date = document.getElementById("date");
-	date.innerHTML = "<h2> Today's Date: " + (tempToday.getMonth() + 1) + "/" + tempToday.getDate() + "/" + tempToday.getFullYear() + "</h2>";
+}
+
+function getStats() {
+	document.getElementById("statements").style.visibility = "hidden";
+	document.getElementById("statistics").style.visibility = "visible";
+	document.getElementById("account_info").style.visibility = "hidden";
+
+}
+
+function getStatements() {
+	document.getElementById("statements").style.visibility = "visible";
+	document.getElementById("statistics").style.visibility = "hidden";
+	document.getElementById("account_info").style.visibility = "hidden";
+
 	getLast(lastYear);
 
 	myDataRef = new Firebase(path + currUser.uid + "/" + today);
@@ -53,6 +69,21 @@ function loadContent() {
 			toFill.innerHTML = "<p><h2>You have already submitted a statement today!</h2></p><p><h4>Come back tomorrow for some more Prior fun!</h4></p>";
 		}
 	});
+}
+
+function loadContent() {
+	currUser = localStorage.getItem('_userData');
+	//parse to Object Literal the JSON object
+	if(currUser) currUser = JSON.parse(currUser);
+
+	var toFill = document.getElementById("past-text");
+	toFill.innerHTML = " ";
+
+	getToday();
+	var date = document.getElementById("date");
+	date.innerHTML = "<h2> Today's Date: " + (tempToday.getMonth() + 1) + "/" + tempToday.getDate() + "/" + tempToday.getFullYear() + "</h2>";
+
+	getStatements();
 }
 
 function getToday() {

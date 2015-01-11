@@ -22,6 +22,12 @@ body {
 	margin-left: 25%;
 }
 
+#navigation {
+	text-align: center;
+	position: fixed;
+	margin-top: 50px;
+}
+
 #content-home {
 	background-color: #ffffff;
 	margin-top: 75px;
@@ -29,6 +35,36 @@ body {
 	width: 405px;
 	height: 515px;
 	text-align: center;
+}
+
+#statements {
+	visibility: hidden;
+}
+
+#statistics {
+	visibility: hidden;
+	margin-top: -97%;
+}
+
+#account_info {
+	visibility: hidden;
+	margin-top: -20%;
+}
+
+#edit_info {
+	margin-top: -85%;
+	margin-left: 18%;
+}
+
+#small_logo {
+	margin-top: -85%;
+	margin-left: 35%;
+}
+
+#reset_password {
+}
+
+#get_premium {
 }
 
 #date {
@@ -47,7 +83,7 @@ body {
 
 #cube {
 	margin-left: 70%;
-	margin-top: -40%;
+	margin-top: -30%;
 	position: relative;
 	-webkit-transition: width 2s, height 2s, -webkit-transform 2s; /* For Safari 3.1 to 6.0 */
 	transition: width 2s, height 2s, transform 2s;
