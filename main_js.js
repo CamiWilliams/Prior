@@ -25,7 +25,6 @@ var choicesCode = "<button class='btn btn-lg btn-primary btn-block' type='submit
 + " type='submit' onclick='loadImage()''>Upload Image</button>";
 
 var fileSelected = false;
-var descriptionAdded = false;
 var firstAdded = false;
 var lastAdded = false;
 
@@ -140,7 +139,6 @@ function sendImage() {
 	var filePath = document.getElementById("file-upload");
 
 	handleFileSelect(filePath);
-	submittedToday = true; //TODO---------------------------------------------------------------------
 
 	var toFill = document.getElementById("choices");
 	toFill.innerHTML = "<h2>Thanks for submitting a statement today! Come back tomorrow to submit another one!</h2>";
@@ -153,7 +151,8 @@ function handleFileSelect(evt) {
 	reader.onload = (function(theFile) {
 		return function(e) {
 			var filePayload = e.target.result;
-	        var hash = CryptoJS.SHA256(Math.random() + CryptoJS.SHA256(filePayload));
+	    var encrypt = CryptoJS.SHA256(Math.random() + CryptoJS.SHA256(filePayload)); //Encrypt file
+
 			myDataRef = new Firebase(path + currUser.uid + "/" + today);
 			myDataRef.child('img').set(e.target.result);
 		};
@@ -165,7 +164,6 @@ function handleFileSelect(evt) {
 function sendText() {
 	myDataRef = new Firebase(path + currUser.uid + "/" + today);
 	myDataRef.child('text').set(document.getElementById("input-text").value);
-	submittedToday = true; //TODO---------------------------------------------------------------------
 
 	var toFill = document.getElementById("choices");
 	toFill.innerHTML = "<h2>Thanks for submitting a statement today! Come back tomorrow to submit another one!</h2>";
