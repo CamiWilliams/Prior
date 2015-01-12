@@ -44,7 +44,6 @@ function getAccount() {
 	document.getElementById("statements").style.visibility = "hidden";
 	document.getElementById("statistics").style.visibility = "hidden";
 	document.getElementById("account_info").style.visibility = "visible";
-
 }
 
 function getStats() {
@@ -52,6 +51,35 @@ function getStats() {
 	document.getElementById("statistics").style.visibility = "visible";
 	document.getElementById("account_info").style.visibility = "hidden";
 
+	myDataRef = new Firebase(path + currUser.uid + "/");
+  var total_count = 0;
+	var year_count = 0;
+	var month_count = 0;
+	var week_count = 0;
+	var streak = 0;
+
+	var temp = new Date();
+//lw_total
+	myDataRef.once('value', function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			total_count++;
+			if(childSnapshot.name().indexOf(tempLastYear.getFullYear()) > -1) {
+				year_count++;
+			}
+			if(childSnapshot.name().indexOf(tempLastMonth.getMonth()) > -1) {
+				month_count++;
+			}
+			if(childSnapshot.name() === (temp.getMonth() + " " + temp.getDate() + " " + temp.getFullYear())) {
+				streak++;
+				temp.setDate(temp.getDate() - 1);
+			}
+		});
+		document.getElementById("total_statements").innerHTML = total_count;
+		document.getElementById("ly_total").innerHTML = year_count;
+		document.getElementById("lm_total").innerHTML = month_count;
+		document.getElementById("longest_streak").innerHTML = streak;
+
+	});
 }
 
 function getStatements() {
